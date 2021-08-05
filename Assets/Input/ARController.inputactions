@@ -1,0 +1,33 @@
+{
+    "name": "ARController",
+    "maps": [
+        {
+            "name": "AR",
+            "id": "6b989886-d57a-4c0c-94ce-448da5196429",
+            "actions": [
+                {
+                    "name": "PlaceBuilding",
+                    "type": "Value",
+                    "id": "06278b87-fa2f-4722-bc25-6e6d6d7d9212",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0c818049-222e-49c2-8da9-80c20101f406",
+                    "path": "<Touchscreen>/primaryTouch/startPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "PlaceBuilding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
