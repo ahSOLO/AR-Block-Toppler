@@ -13,16 +13,27 @@ public class BuildingPlacer : MonoBehaviour
     [SerializeField] GameObject selectionCircle;
 
     ARRaycastManager arRM;
-    bool buildingIsPlaced;
+    public bool buildingIsPlaced;
     ARPlaneManager arPM;
+
+    [SerializeField] InputActionAsset inputMap;
+    private InputAction click;
+    private InputAction pos;
 
     List<ARRaycastHit> hits = new List<ARRaycastHit>();
 
-    private void Start()
+    private void OnEnable()
     {
+        inputMap.Enable();
+        
         arRM = GetComponent<ARRaycastManager>();
         arPM = GetComponent<ARPlaneManager>();
         buildingIsPlaced = false;
+
+        click = inputMap.FindAction("Click");
+        pos = inputMap.FindAction("Position");
+
+        click.performed += PlaceBuilding;
     }
 
     private void Update()
@@ -45,7 +56,7 @@ public class BuildingPlacer : MonoBehaviour
 
     public void PlaceBuilding(InputAction.CallbackContext context)
     {
-        var location = context.ReadValue<Vector2>();
+        var location = pos.ReadValue<Vector2>();
 
         // Spawn the building prefab if raycast hits an AR plane, no building currently is placed & tap was not over a UI element
         if (arRM.Raycast(location, hits, TrackableType.PlaneWithinPolygon)
@@ -57,10 +68,8 @@ public class BuildingPlacer : MonoBehaviour
             Instantiate(buildingPrefab, hitPose.position, hitPose.rotation, environmentContainer.transform);
             arPM.enabled = false;
             
-            buildingIsPlaced = true;
-            GameManager.instance.gState = GameManager.GameState.Aiming;
-
             DisableARPlanes();
+            buildingIsPlaced = true;
         }
     }
 
@@ -72,6 +81,11 @@ public class BuildingPlacer : MonoBehaviour
         }
 
         arPM.enabled = false;
+    }
+
+    private void OnDisable()
+    {
+        click.performed -= PlaceBuilding;
     }
 
 }

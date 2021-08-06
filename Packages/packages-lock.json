@@ -87,7 +87,7 @@
       "url": "https://registry.npmjs.org"
     },
     "com.unity.collab-proxy": {
-      "version": "1.5.7",
+      "version": "1.7.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
