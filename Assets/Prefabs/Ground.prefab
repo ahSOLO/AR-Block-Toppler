@@ -69,3 +69,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destructionParticles: {fileID: 807029667935285651, guid: 0dfeab011d2bfde489a5307f2331f968, type: 3}
   environmentContainer: {fileID: 0}
+  score: {fileID: 11400000, guid: 567f071e27a26d54784ddec2d436c202, type: 2}

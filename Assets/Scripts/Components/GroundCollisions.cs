@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityAtoms.BaseAtoms;
 
 public class GroundCollisions : MonoBehaviour
 {
     [SerializeField] ParticleSystem destructionParticles;
     [SerializeField] GameObject environmentContainer;
+
+    [SerializeField] IntVariable score;
 
     private void Start()
     {
@@ -16,13 +19,13 @@ public class GroundCollisions : MonoBehaviour
     {
         if (collision.collider.tag == "Block")
         {
-            // GameManager.instance.UpdateScore(GameManager.instance.score + 100);
-            StartCoroutine(DelayedDestroyGO(collision.gameObject, 0.2f));
+            score.Add(175);
+            StartCoroutine(DelayedDestroyGO(collision.gameObject, 0.3f));
         }
 
         else if (collision.collider.tag == "Ball")
         {
-            StartCoroutine(DelayedDestroyGO(collision.gameObject, 0.3f));
+            StartCoroutine(DelayedDestroyGO(collision.gameObject, 0.4f));
         }
     }
 

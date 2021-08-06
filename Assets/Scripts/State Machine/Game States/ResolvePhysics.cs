@@ -6,15 +6,17 @@ using System;
 public class ResolvePhysics : IState
 {
     HashSet<Rigidbody> movingObjects;
+    GameObject scoreTextObj;
 
-    public ResolvePhysics(HashSet<Rigidbody> _movingObjects)
+    public ResolvePhysics(HashSet<Rigidbody> _movingObjects, GameObject _scoreTextObj)
     {
         movingObjects = _movingObjects;
+        scoreTextObj = _scoreTextObj;
     }
 
     public void OnEnter()
     {
-
+        scoreTextObj.SetActive(true);
     }
 
     public void FixedTick()
@@ -34,6 +36,6 @@ public class ResolvePhysics : IState
 
     public void OnExit()
     {
-
+        scoreTextObj.SetActive(false);
     }
 }

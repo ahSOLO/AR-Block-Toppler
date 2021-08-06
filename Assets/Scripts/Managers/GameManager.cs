@@ -11,6 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] BuildingPlacer buildingPlacer;
     [SerializeField] BallLauncher ballLauncher;
 
+    [SerializeField] GameObject setupTextObj;
+    [SerializeField] GameObject shotsRemainingTextObj;
+    [SerializeField] GameObject scoreTextObj;
+
     public HashSet<Rigidbody> movingObjects = new HashSet<Rigidbody>();
 
     private void Awake()
@@ -31,9 +35,9 @@ public class GameManager : MonoBehaviour
     {
         fSM = new StateMachine();
 
-        var setup = new Setup(buildingPlacer);
-        var aiming = new Aiming(ballLauncher);
-        var resolvePhysics = new ResolvePhysics(movingObjects);
+        var setup = new Setup(buildingPlacer, setupTextObj);
+        var aiming = new Aiming(ballLauncher, shotsRemainingTextObj);
+        var resolvePhysics = new ResolvePhysics(movingObjects, scoreTextObj);
 
         fSM.AddTransition(setup, aiming, () => buildingPlacer.buildingIsPlaced);
         fSM.AddTransition(aiming, resolvePhysics, () => ballLauncher.inCooldown);
