@@ -2,14 +2,57 @@
     "name": "ARController",
     "maps": [
         {
-            "name": "AR",
+            "name": "Touch",
             "id": "6b989886-d57a-4c0c-94ce-448da5196429",
             "actions": [
                 {
-                    "name": "PlaceBuilding",
+                    "name": "Touch Position",
                     "type": "Value",
                     "id": "06278b87-fa2f-4722-bc25-6e6d6d7d9212",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "Tap"
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "0c818049-222e-49c2-8da9-80c20101f406",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "669b55b3-f5f9-4bb3-b3c7-ed52bb81ef4e",
+            "actions": [
+                {
+                    "name": "Submit",
+                    "type": "Button",
+                    "id": "aa571319-3361-48c7-80b5-84168d09c59c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Point",
+                    "type": "PassThrough",
+                    "id": "788fd761-7379-47cb-9eb8-7598bfb5cdbe",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Click",
+                    "type": "PassThrough",
+                    "id": "44f5d9ac-54d0-421b-8a99-83bb0ad44cc6",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
                 }
@@ -17,12 +60,34 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "0c818049-222e-49c2-8da9-80c20101f406",
-                    "path": "<Touchscreen>/primaryTouch/startPosition",
+                    "id": "94a6dd2a-5b40-4584-b660-60e8b6057ea7",
+                    "path": "*/{Submit}",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "PlaceBuilding",
+                    "action": "Submit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f7d06506-98f9-4ffd-865e-d36da68d0654",
+                    "path": "<Touchscreen>/primaryTouch/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Point",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b75e157e-975a-49b6-bf33-d5ac1f104ed4",
+                    "path": "<Touchscreen>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

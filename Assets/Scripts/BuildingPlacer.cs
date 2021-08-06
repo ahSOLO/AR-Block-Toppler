@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class BuildingPlacer : MonoBehaviour
 {
@@ -46,8 +47,10 @@ public class BuildingPlacer : MonoBehaviour
     {
         var location = context.ReadValue<Vector2>();
 
-        if (arRM.Raycast(location, hits, TrackableType.PlaneWithinPolygon) &&
-            buildingIsPlaced == false)
+        // Spawn the building prefab if raycast hits an AR plane, no building currently is placed & tap was not over a UI element
+        if (arRM.Raycast(location, hits, TrackableType.PlaneWithinPolygon)
+            && buildingIsPlaced == false
+            && !Helpers.IsPointerOverUIObject(location))
         {
             var hitPose = hits[0].pose;
 
@@ -55,6 +58,7 @@ public class BuildingPlacer : MonoBehaviour
             arPM.enabled = false;
             
             buildingIsPlaced = true;
+            GameManager.instance.gState = GameManager.GameState.Aiming;
 
             DisableARPlanes();
         }
