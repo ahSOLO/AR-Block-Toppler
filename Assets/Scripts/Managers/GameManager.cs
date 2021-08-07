@@ -10,10 +10,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] BuildingPlacer buildingPlacer;
     [SerializeField] BallLauncher ballLauncher;
+    [SerializeField] CastleRotator castleRotator;
 
     [SerializeField] GameObject setupTextObj;
     [SerializeField] GameObject shotsRemainingTextObj;
     [SerializeField] GameObject scoreTextObj;
+    [SerializeField] GameObject rotateRightButtonObj;
+    [SerializeField] GameObject rotateLeftButtonObj;
 
     public HashSet<Rigidbody> movingObjects = new HashSet<Rigidbody>();
 
@@ -36,10 +39,13 @@ public class GameManager : MonoBehaviour
         fSM = new StateMachine();
 
         var setup = new Setup(buildingPlacer, setupTextObj);
-        var aiming = new Aiming(ballLauncher, shotsRemainingTextObj);
+        var aiming = new Aiming(ballLauncher, shotsRemainingTextObj, rotateRightButtonObj, rotateLeftButtonObj);
+        var rotating = new Rotating();
         var resolvePhysics = new ResolvePhysics(movingObjects, scoreTextObj);
 
         fSM.AddTransition(setup, aiming, () => buildingPlacer.buildingIsPlaced);
+        fSM.AddTransition(aiming, rotating, () => castleRotator.isRotating);
+        fSM.AddTransition(rotating, aiming, () => !castleRotator.isRotating);
         fSM.AddTransition(aiming, resolvePhysics, () => ballLauncher.inCooldown);
         fSM.AddTransition(resolvePhysics, aiming, () => movingObjects.Count == 0);
 

@@ -12,4 +12,11 @@ public static class Helpers
         EventSystem.current.RaycastAll(eventData, results);
         return results.Count > 0;
     }
+
+    public static float NormalizeAngle(float a)
+    {
+        if (a > 180f) return a - 360f;
+        else if (a < -180f) return a + 360f;
+        return a;
+    }
 }
