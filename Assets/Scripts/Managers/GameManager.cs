@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityAtoms.BaseAtoms;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,13 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] BallLauncher ballLauncher;
     [SerializeField] CastleRotator castleRotator;
 
-    [SerializeField] GameObject setupTextObj;
-    [SerializeField] GameObject shotsRemainingTextObj;
-    [SerializeField] GameObject scoreTextObj;
-    [SerializeField] GameObject rotateRightButtonObj;
-    [SerializeField] GameObject rotateLeftButtonObj;
-
     public HashSet<Rigidbody> movingObjects = new HashSet<Rigidbody>();
+
+    public IntVariable score;
 
     private void Awake()
     {
@@ -38,10 +35,10 @@ public class GameManager : MonoBehaviour
     {
         fSM = new StateMachine();
 
-        var setup = new Setup(buildingPlacer, setupTextObj);
-        var aiming = new Aiming(ballLauncher, shotsRemainingTextObj, rotateRightButtonObj, rotateLeftButtonObj);
+        var setup = new Setup(buildingPlacer);
+        var aiming = new Aiming(ballLauncher);
         var rotating = new Rotating();
-        var resolvePhysics = new ResolvePhysics(movingObjects, scoreTextObj);
+        var resolvePhysics = new ResolvePhysics(movingObjects);
 
         fSM.AddTransition(setup, aiming, () => buildingPlacer.buildingIsPlaced);
         fSM.AddTransition(aiming, rotating, () => castleRotator.isRotating);

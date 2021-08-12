@@ -4,18 +4,17 @@ public class Setup : IState
 {
 
     BuildingPlacer buildingPlacer;
-    GameObject setupTextObj;
 
-    public Setup(BuildingPlacer _buildingPlacer, GameObject _setupTextObj)
+    public Setup(BuildingPlacer _buildingPlacer)
     {
         buildingPlacer = _buildingPlacer;
-        setupTextObj = _setupTextObj;
     }
 
     public void OnEnter()
     {
         buildingPlacer.enabled = true;
-        setupTextObj.SetActive(true);
+        UIController.instance.setSetupText(true, "Tap on an open, flat surface to build the castle.");
+        UIController.instance.setScoreText(false);
     }
 
     public void FixedTick()
@@ -36,6 +35,7 @@ public class Setup : IState
     public void OnExit()
     {
         buildingPlacer.enabled = false;
-        setupTextObj.SetActive(false);
+        UIController.instance.setSetupText(false);
+        UIController.instance.setScoreText(true, $"Current Score: {GameManager.instance.score.Value}");
     }
 }

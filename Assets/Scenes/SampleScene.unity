@@ -851,8 +851,9 @@ GameObject:
   - component: {fileID: 865166291}
   - component: {fileID: 865166290}
   - component: {fileID: 865166289}
+  - component: {fileID: 865166293}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -943,6 +944,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &865166293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 865166288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2db683907a6861459aacc83db3a846c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setupText: {fileID: 737205727}
+  shotsRemainingText: {fileID: 2106876711}
+  scoreText: {fileID: 749339787}
+  rotateRightButton: {fileID: 492137398}
+  rotateLeftButton: {fileID: 2144984819}
 --- !u!1 &957029072
 GameObject:
   m_ObjectHideFlags: 0
@@ -984,6 +1002,7 @@ GameObject:
   - component: {fileID: 1010347834}
   - component: {fileID: 1010347833}
   - component: {fileID: 1010347835}
+  - component: {fileID: 1010347840}
   - component: {fileID: 1010347836}
   - component: {fileID: 1010347837}
   - component: {fileID: 1010347838}
@@ -1098,8 +1117,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47ac6bfb65baf3d4e86e4d6cf975d15c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationDuration: 1.25
+  rotationDuration: 1
   isRotating: 0
+--- !u!114 &1010347840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1010347832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab0e80cee9cc1d44928bfe488dd1e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PointCloudPrefab: {fileID: 0}
 --- !u!1 &1091473863
 GameObject:
   m_ObjectHideFlags: 0
@@ -1162,11 +1194,7 @@ MonoBehaviour:
   buildingPlacer: {fileID: 1010347837}
   ballLauncher: {fileID: 1010347838}
   castleRotator: {fileID: 1010347839}
-  setupTextObj: {fileID: 737205725}
-  shotsRemainingTextObj: {fileID: 2106876709}
-  scoreTextObj: {fileID: 749339785}
-  rotateRightButtonObj: {fileID: 492137398}
-  rotateLeftButtonObj: {fileID: 2144984819}
+  score: {fileID: 11400000, guid: 567f071e27a26d54784ddec2d436c202, type: 2}
 --- !u!4 &1249122679
 Transform:
   m_ObjectHideFlags: 0
