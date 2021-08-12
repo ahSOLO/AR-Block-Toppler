@@ -37,7 +37,8 @@ public class UIController : MonoBehaviour
         if (isActive)
         {
             shotsRemainingText.gameObject.SetActive(true);
-            shotsRemainingText.text = text;
+            if (text != null)
+                shotsRemainingText.text = text;
         }
         else
         {
@@ -50,7 +51,8 @@ public class UIController : MonoBehaviour
         if (isActive)
         {
             scoreText.gameObject.SetActive(true);
-            scoreText.text = text;
+            if (text != null)
+                scoreText.text = text;
         }
         else
         {
