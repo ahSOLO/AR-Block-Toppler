@@ -1002,7 +1002,6 @@ GameObject:
   - component: {fileID: 1010347834}
   - component: {fileID: 1010347833}
   - component: {fileID: 1010347835}
-  - component: {fileID: 1010347840}
   - component: {fileID: 1010347836}
   - component: {fileID: 1010347837}
   - component: {fileID: 1010347838}
@@ -1119,19 +1118,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationDuration: 1
   isRotating: 0
---- !u!114 &1010347840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010347832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab0e80cee9cc1d44928bfe488dd1e2d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PointCloudPrefab: {fileID: 0}
 --- !u!1 &1091473863
 GameObject:
   m_ObjectHideFlags: 0
